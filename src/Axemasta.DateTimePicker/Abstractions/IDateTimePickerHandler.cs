@@ -1,5 +1,7 @@
 #if IOS && !MACCATALYST
 using PlatformView = UIKit.UIDatePicker;
+#elif MACCATALYST
+using PlatformView = UIKit.UIDatePicker;
 #elif MONOANDROID
 using PlatformView = Axemasta.DateTimePicker.Platforms.Droid.MauiDateTimePicker;
 #elif (NETSTANDARD || !PLATFORM) || (NET6_0_OR_GREATER && !IOS && !ANDROID && !TIZEN)
