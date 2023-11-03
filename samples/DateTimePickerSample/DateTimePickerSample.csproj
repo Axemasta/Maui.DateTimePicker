@@ -56,7 +56,13 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Acr.UserDialogs" Version="8.0.1" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\Axemasta.DateTimePicker\Axemasta.DateTimePicker.csproj" />
     </ItemGroup>
 
     <!-- Build Properties must be defined within these property groups to ensure successful publishing

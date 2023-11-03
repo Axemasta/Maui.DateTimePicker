@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="DateTimePickerSample.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:axemasta="http://axemasta.com/schemas/2023/controls"
+    xmlns:viewmodels="clr-namespace:DateTimePickerSample.ViewModels"
+    x:DataType="viewmodels:MainViewModel">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout
+                Padding="30,0"
+                Spacing="25"
+                VerticalOptions="Center">
+
+                <Image
+                    HeightRequest="200"
+                    HorizontalOptions="Center"
+                    SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                    Source="dotnet_bot.png" />
+
+                <Label
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    SemanticProperties.HeadingLevel="Level1"
+                    Text="Hello, World!" />
+
+                <axemasta:DateTimePicker />
+
+                <Button
+                    Command="{Binding DisplaySelectionCommand}"
+                    HorizontalOptions="Center"
+                    SemanticProperties.Hint="Displays the selected date as an alert"
+                    Text="Show Selected Date" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
