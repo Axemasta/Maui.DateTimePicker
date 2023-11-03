@@ -1,3 +1,4 @@
+using Foundation;
 using Microsoft.Maui.Handlers;
 using UIKit;
 namespace Axemasta.DateTimePicker.Handlers;
@@ -6,6 +7,14 @@ public partial class DateTimePickerHandler : ViewHandler<IDateTimePicker, UIDate
 {
     protected override UIDatePicker CreatePlatformView()
     {
-        throw new NotImplementedException();
+        var picker = new UIDatePicker()
+        {
+            Mode = UIDatePickerMode.DateAndTime,
+            PreferredDatePickerStyle = UIDatePickerStyle.Inline,
+        };
+        
+        // VirtualView.Mi
+
+        return picker;
     }
 }
