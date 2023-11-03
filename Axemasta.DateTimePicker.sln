@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axemasta.DateTimePicker", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{D98993DD-7B93-4BA2-A579-77F4856ACAE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimePickerSample", "DateTimePickerSample\DateTimePickerSample.csproj", "{D037DAF0-9122-4237-9D84-5EFBE7EC85DA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimePickerSample", "samples\DateTimePickerSample\DateTimePickerSample.csproj", "{D037DAF0-9122-4237-9D84-5EFBE7EC85DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
