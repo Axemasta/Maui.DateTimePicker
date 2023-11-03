@@ -1,0 +1,27 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Axemasta.DateTimePicker", "src\Axemasta.DateTimePicker\Axemasta.DateTimePicker.csproj", "{94EE024C-3ECF-49E9-B8CE-FCC93B16EB70}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{D98993DD-7B93-4BA2-A579-77F4856ACAE0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DateTimePickerSample", "DateTimePickerSample\DateTimePickerSample.csproj", "{D037DAF0-9122-4237-9D84-5EFBE7EC85DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{94EE024C-3ECF-49E9-B8CE-FCC93B16EB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94EE024C-3ECF-49E9-B8CE-FCC93B16EB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94EE024C-3ECF-49E9-B8CE-FCC93B16EB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94EE024C-3ECF-49E9-B8CE-FCC93B16EB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D037DAF0-9122-4237-9D84-5EFBE7EC85DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D037DAF0-9122-4237-9D84-5EFBE7EC85DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D037DAF0-9122-4237-9D84-5EFBE7EC85DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D037DAF0-9122-4237-9D84-5EFBE7EC85DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D037DAF0-9122-4237-9D84-5EFBE7EC85DA} = {D98993DD-7B93-4BA2-A579-77F4856ACAE0}
+	EndGlobalSection
+EndGlobal
