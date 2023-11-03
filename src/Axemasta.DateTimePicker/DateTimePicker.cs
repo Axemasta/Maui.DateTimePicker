@@ -1,7 +1,7 @@
 using Font = Microsoft.Maui.Font;
 namespace Axemasta.DateTimePicker;
 
-public partial class DateTimePicker : View, IDateTimePicker
+public class DateTimePicker : View, IDateTimePicker
 {
     /// <summary>Bindable property for <see cref="Date"/>.</summary>
     public readonly static BindableProperty DateProperty = BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(DateTimePicker), default(DateTime), BindingMode.TwoWay,
