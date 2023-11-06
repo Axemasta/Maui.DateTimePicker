@@ -25,6 +25,12 @@
         
     </ItemGroup>
 
+    <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+        <AndroidResource Include="Platforms\Android\**\*.axml" />
+        <AndroidResource Include="Platforms\Android\**\*.xml" />
+        <AndroidResource Include="Platforms\Android\**\*.png" />
+    </ItemGroup>
+
     <!-- iOS -->
     <ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-ios')) != true">
         <Compile Remove="**\**\*.ios.cs" />

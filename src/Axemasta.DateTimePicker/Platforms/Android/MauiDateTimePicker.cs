@@ -21,16 +21,7 @@ public class MauiDateTimePicker : LinearLayout
     public MauiDateTimePicker([NotNull] Context context) 
         : base(context)
     {
-        var calendarView = new CalendarView(context);
-        calendarView.LayoutParameters = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-
-        var timePicker = new TimePicker(context);
-        timePicker.SetIs24HourView(new Boolean(false));
-
-        timePicker.LayoutParameters = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-        
-        // AddView(calendarView);
-        AddView(timePicker);
+        Inflate(context, Resource.Layout.date_time_picker, this);
     }
 
     public MauiDateTimePicker([NotNull] Context context, IAttributeSet attrs) 
