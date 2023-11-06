@@ -22,6 +22,7 @@
     <ItemGroup Condition="$(TargetFramework.StartsWith('net7.0-android')) != true">
         <Compile Remove="**\**\*.android.cs" />
         <None Include="**\**\*.android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
+        
     </ItemGroup>
 
     <!-- iOS -->

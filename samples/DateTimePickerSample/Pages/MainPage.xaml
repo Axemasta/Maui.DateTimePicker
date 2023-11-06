@@ -24,7 +24,34 @@
                     FontSize="32"
                     HorizontalOptions="Center"
                     SemanticProperties.HeadingLevel="Level1"
-                    Text="Hello, World!" />
+                    Text="Maui Controls" />
+
+                <Label
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    SemanticProperties.HeadingLevel="Level2"
+                    Text="Date Picker" />
+
+                <DatePicker />
+
+                <Label
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    SemanticProperties.HeadingLevel="Level2"
+                    Text="Time Picker" />
+
+                <TimePicker />
+
+                <Label
+                    FontSize="32"
+                    HorizontalOptions="Center"
+                    SemanticProperties.HeadingLevel="Level1"
+                    Text="Custom DTP Controls" />
+
+                <Grid ColumnDefinitions="2*, *">
+                    <DatePicker />
+                    <TimePicker Grid.Column="1" />
+                </Grid>
 
                 <axemasta:DateTimePicker Date="{Binding SelectedDateTime}" />
 
