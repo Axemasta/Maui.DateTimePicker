@@ -1,6 +1,6 @@
 using Microsoft.Maui.Handlers;
 #if IOS && !MACCATALYST
-using PlatformView = UIKit.UIDatePicker;
+using PlatformView = Axemasta.DateTimePicker.Platforms.iOS.MauiDateTimePicker;
 #elif MACCATALYST
 using PlatformView = UIKit.UIDatePicker;
 #elif MONOANDROID

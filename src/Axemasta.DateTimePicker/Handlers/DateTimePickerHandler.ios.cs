@@ -1,60 +1,48 @@
-using System.Diagnostics;
-using Foundation;
+using Axemasta.DateTimePicker.Platforms.iOS;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Handlers;
 using UIKit;
 namespace Axemasta.DateTimePicker.Handlers;
 
-public partial class DateTimePickerHandler : ViewHandler<IDateTimePicker, UIDatePicker>, IDateTimePickerHandler
+public partial class DateTimePickerHandler : ViewHandler<IDateTimePicker, MauiDateTimePicker>, IDateTimePickerHandler
 {
     internal bool UpdateImmediately { get; set; }
     
-    protected override UIDatePicker CreatePlatformView()
+    protected override MauiDateTimePicker CreatePlatformView()
     {
         if (!UIDevice.CurrentDevice.CheckSystemVersion(14, 0))
         {
             throw new NotSupportedException("This control is only supported on iOS 14+");
         }
         
-        var picker = new MauiDateTimePicker()
+        return new MauiDateTimePicker()
         {
             Mode = UIDatePickerMode.DateAndTime,
             PreferredDatePickerStyle = UIDatePickerStyle.Inline,
         };
-
-        return picker;
     }
 
-    protected override void ConnectHandler(UIDatePicker platformView)
+    protected override void ConnectHandler(MauiDateTimePicker platformView)
     {
-        if (platformView is not MauiDateTimePicker platformWrapperView)
-        {
-            return;
-        }
-
-        platformWrapperView.MauiDateTimePickerDelegate = new DateTimePickerDelegate(this);
+        platformView.MauiDateTimePickerDelegate = new DateTimePickerDelegate(this);
 
         if (VirtualView?.Date is not null && VirtualView.Date is var dt)
         {
-            platformWrapperView.Date = dt.ToNSDate();
+            platformView.Date = dt.ToNSDate();
         }
         
         base.ConnectHandler(platformView);
     }
 
-    protected override void DisconnectHandler(UIDatePicker platformView)
+    protected override void DisconnectHandler(MauiDateTimePicker platformView)
     {
-        if (platformView is MauiDateTimePicker platformWrapperView)
-        {
-            platformWrapperView.MauiDateTimePickerDelegate = null;
-        }
+        platformView.MauiDateTimePickerDelegate = null;
         
         base.DisconnectHandler(platformView);
     }
 
     static void OnValueChanged(object? sender)
     {
-        Debug.WriteLine("OnValueChanged");
         if (sender is DateTimePickerHandler datePickerHandler)
         {
             if (datePickerHandler.UpdateImmediately) // Platform Specific
@@ -73,7 +61,6 @@ public partial class DateTimePickerHandler : ViewHandler<IDateTimePicker, UIDate
     {
         if (sender is IDateTimePickerHandler datePickerHandler && datePickerHandler.VirtualView is not null)
         {
-            Debug.WriteLine("OnStarted");
             datePickerHandler.VirtualView.IsFocused = true;
         }
     }
@@ -82,7 +69,6 @@ public partial class DateTimePickerHandler : ViewHandler<IDateTimePicker, UIDate
     {
         if (sender is IDateTimePickerHandler datePickerHandler && datePickerHandler.VirtualView is not null)
         {
-            Debug.WriteLine("OnEnded");
             datePickerHandler.VirtualView.IsFocused = false;
         }
     }
@@ -143,63 +129,3 @@ public partial class DateTimePickerHandler : ViewHandler<IDateTimePicker, UIDate
     }
 }
 
-internal class MauiDateTimePickerDelegate
-{
-    public virtual void DateTimePickerEditingDidBegin()
-    {
-
-    }
-
-    public virtual void DateTimePickerEditingDidEnd()
-    {
-
-    }
-
-    public virtual void DateTimePickerValueChanged()
-    {
-
-    }
-
-    public virtual void DoneClicked()
-    {
-
-    }
-}
-
-internal class MauiDateTimePicker : UIDatePicker
-{
-    readonly UIDateTimePickerProxy proxy = new();
-    
-    public MauiDateTimePicker()
-    {
-        EditingDidBegin += OnEditingDidBegin;
-        EditingDidEnd += OnEditingDidEnd;
-        ValueChanged += proxy.OnValueChanged;
-        
-        // TODO: Ensure the accessory view click is not needed...
-    }
-
-    private void OnEditingDidBegin(object? sender, EventArgs e)
-    {
-        MauiDateTimePickerDelegate?.DateTimePickerEditingDidBegin();
-    }
-
-    private void OnEditingDidEnd(object? sender, EventArgs e)
-    {
-        MauiDateTimePickerDelegate?.DateTimePickerEditingDidEnd();
-    }
-    
-    internal MauiDateTimePickerDelegate? MauiDateTimePickerDelegate
-    {
-        get => proxy.MauiDateTimePickerDelegate;
-        set => proxy.MauiDateTimePickerDelegate = value;
-    }
-    
-    class UIDateTimePickerProxy
-    {
-        internal MauiDateTimePickerDelegate? MauiDateTimePickerDelegate { get; set; }
-
-        public void OnValueChanged(object? sender, EventArgs e) =>
-            MauiDateTimePickerDelegate?.DateTimePickerValueChanged();
-    }
-}

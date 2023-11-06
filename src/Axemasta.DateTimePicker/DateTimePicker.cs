@@ -1,4 +1,3 @@
-using Font = Microsoft.Maui.Font;
 namespace Axemasta.DateTimePicker;
 
 public partial class DateTimePicker : View, IDateTimePicker, IElementConfiguration<DateTimePicker>
