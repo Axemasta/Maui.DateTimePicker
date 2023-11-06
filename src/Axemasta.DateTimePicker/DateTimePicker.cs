@@ -1,7 +1,7 @@
 using Font = Microsoft.Maui.Font;
 namespace Axemasta.DateTimePicker;
 
-public class DateTimePicker : View, IDateTimePicker
+public partial class DateTimePicker : View, IDateTimePicker, IElementConfiguration<DateTimePicker>
 {
     /// <summary>Bindable property for <see cref="Date"/>.</summary>
     public readonly static BindableProperty DateProperty = BindableProperty.Create(nameof(Date), typeof(DateTime), typeof(DateTimePicker), default(DateTime), BindingMode.TwoWay,
@@ -45,11 +45,17 @@ public class DateTimePicker : View, IDateTimePicker
     }
     
     public event EventHandler<DateChangedEventArgs> DateSelected;
+    readonly Lazy<PlatformConfigurationRegistry<DateTimePicker>> _platformConfigurationRegistry;
+
+    public DateTimePicker()
+    {
+        _platformConfigurationRegistry = new Lazy<PlatformConfigurationRegistry<DateTimePicker>>(() => new PlatformConfigurationRegistry<DateTimePicker>(this));
+    }
     
     static object CoerceDate(BindableObject bindable, object value)
     {
         var picker = (DateTimePicker)bindable;
-        DateTime dateValue = ((DateTime)value).Date;
+        DateTime dateValue = (DateTime)value;
 
         if (dateValue > picker.MaximumDate)
             dateValue = picker.MaximumDate;
@@ -99,5 +105,10 @@ public class DateTimePicker : View, IDateTimePicker
             picker.Date = dateValue;
 
         return dateValue;
+    }
+
+    public IPlatformElementConfiguration<T, DateTimePicker> On<T>() where T : IConfigPlatform
+    {
+        return _platformConfigurationRegistry.Value.On<T>();
     }
 }

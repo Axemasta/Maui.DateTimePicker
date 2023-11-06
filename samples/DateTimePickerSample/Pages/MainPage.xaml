@@ -26,7 +26,7 @@
                     SemanticProperties.HeadingLevel="Level1"
                     Text="Hello, World!" />
 
-                <axemasta:DateTimePicker />
+                <axemasta:DateTimePicker Date="{Binding SelectedDateTime}" />
 
                 <Button
                     Command="{Binding DisplaySelectionCommand}"

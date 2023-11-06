@@ -10,6 +10,8 @@ public static class AppBuilderExtensions
             handlers.AddHandler<DateTimePicker, DateTimePickerHandler>();
         });
         
+        DateTimePicker.RemapForControls();
+        
         return mauiAppBuilder;
     }
 }
